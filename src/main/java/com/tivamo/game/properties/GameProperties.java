@@ -1,9 +1,7 @@
 package com.tivamo.game.properties;
 
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 
 public class GameProperties {
@@ -17,7 +15,7 @@ public class GameProperties {
 
 	public static void read() throws IOException {
 		Properties properties = new Properties();
-		InputStream input = new FileInputStream("/home/teja/Videos/eclipse/game/src/main/resources/global.properties");
+		FileReader input = new FileReader("/home/teja/Videos/eclipse/game/src/main/resources/global.properties");
 		properties.load(input);
 		NUM_LADDERS_EASY = Integer.parseInt(properties.getProperty("numLaddersEasy"));
 		NUM_SNAKES_EASY = Integer.parseInt(properties.getProperty("numSnakesEasy"));

@@ -1,4 +1,4 @@
-package com.tivamo.game;
+package com.tivamo.game.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,8 +6,8 @@ import java.util.Map;
 import com.tivamo.game.properties.GameProperties;
 
 public class Level {
-	static int ladders;
-	static int snakes;
+	private int ladders;
+	private int snakes;
 
 	public void createLaddersAndSnakesOnLevel(String level) {
 		HashMap<String, HashMap<Integer, Integer>> hashmap = new HashMap<String, HashMap<Integer, Integer>>();
@@ -24,4 +24,13 @@ public class Level {
 			System.out.println("Snakes In this Level: " + key.getValue());
 		}
 	}
+
+	public int getLadders() {
+		return ladders;
+	}
+
+	public int getSnakes() {
+		return snakes;
+	}
+
 }

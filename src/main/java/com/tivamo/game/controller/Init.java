@@ -1,4 +1,4 @@
-package com.tivamo.game;
+package com.tivamo.game.controller;
 
 import java.io.IOException;
 
@@ -7,11 +7,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Game {
+public class Init {
 
 	@RequestMapping(value = "/newgame", method = RequestMethod.GET)
-	public String playGame() throws IOException {
-		Init playGame = new Init();
-		return playGame.init();
+	public String initGame() throws IOException {
+		Game game = new Game();
+		return game.newGame();
 	}
+
 }

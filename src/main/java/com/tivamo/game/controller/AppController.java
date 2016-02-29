@@ -1,4 +1,4 @@
-package com.tivamo.game;
+package com.tivamo.game.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -9,7 +9,7 @@ public class AppController {
 
 	@RequestMapping(value = "/", method = { RequestMethod.GET, RequestMethod.HEAD, RequestMethod.OPTIONS })
 	public String ping() {
-		return "Welcome";
+		return "Welcome to Snakes And Ladders Game Home Page";
 	}
 
 }
