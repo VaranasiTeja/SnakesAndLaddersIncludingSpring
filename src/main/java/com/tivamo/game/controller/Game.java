@@ -24,10 +24,10 @@ public class Game {
 	@Autowired
 	private Level level;
 
-	private String result;
-
 	@Autowired
 	private Board board;
+
+	private String result;
 
 	public String newGame() {
 		List<Player> players = new ArrayList<Player>();
@@ -43,6 +43,10 @@ public class Game {
 		List<Snake> snakeList = board.getSnakeList();
 		boolean hasGameEnded = false;
 		do {
+			if (players.size() == 0) {
+				hasGameEnded = true;
+				return "Minimum Number of players Should be 1";
+			}
 			for (Player player : players) {
 				int diceOutcome = RandomNumber.diceOutcome(gameProperties.DICE_OUTCOME_RANGE);
 				int playerUpdatedPosition = LadderUtilities.getLadderTopPosition((player.getPosition() + diceOutcome),

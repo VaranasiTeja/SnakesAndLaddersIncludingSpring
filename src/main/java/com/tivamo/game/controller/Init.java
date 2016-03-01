@@ -13,7 +13,6 @@ public class Init {
 
 	@RequestMapping(value = "/newgame", method = RequestMethod.GET)
 	public String initGame() {
-		// Game game = new Game();
 		return game.newGame();
 	}
 

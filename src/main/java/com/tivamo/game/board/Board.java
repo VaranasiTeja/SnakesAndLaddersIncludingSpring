@@ -3,12 +3,14 @@ package com.tivamo.game.board;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.tivamo.game.ladder.Ladder;
 import com.tivamo.game.ladder.LadderManager;
 import com.tivamo.game.snake.Snake;
 import com.tivamo.game.snake.SnakeManager;
 
+@Component
 public class Board {
 
 	private List<Ladder> ladderList;

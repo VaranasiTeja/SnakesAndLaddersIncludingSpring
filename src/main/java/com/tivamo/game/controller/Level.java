@@ -14,13 +14,11 @@ public class Level {
 	@Autowired
 	private GameProperties gameProperties;
 
-	@Autowired
-	private HashMap<String, HashMap<Integer, Integer>> hashmap;
-
 	private int ladders;
 	private int snakes;
 
 	public void createLaddersAndSnakesOnLevel(String level) {
+		HashMap<String, HashMap<Integer, Integer>> hashmap=new HashMap<String, HashMap<Integer, Integer>>();
 		HashMap<Integer, Integer> map2 = new HashMap<Integer, Integer>();
 		HashMap<Integer, Integer> map3 = new HashMap<Integer, Integer>();
 		map2.put(gameProperties.NUM_LADDERS_EASY, gameProperties.NUM_SNAKES_EASY);

@@ -4,8 +4,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
-import com.tivamo.game.board.Board;
-
 @Configuration
 public class ApplicationDependencyFactory {
 
@@ -14,9 +12,9 @@ public class ApplicationDependencyFactory {
 		return new PropertySourcesPlaceholderConfigurer();
 	}
 
-	@Bean
-	public Board getBoard() {
-		return new Board();
-	}
+//	@Bean
+//	public Board getBoard() {
+//		return new Board();
+//	}
 
 }
