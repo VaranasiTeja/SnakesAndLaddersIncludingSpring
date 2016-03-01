@@ -35,10 +35,10 @@ public class Game {
 			players.add(new Player(player));
 		}
 		this.createBoardByLevel(board, levelValue);
-		return this.playGame(players, board);
+		return this.playGame(players, board, levelValue);
 	}
 
-	private String playGame(List<Player> players, Board board) {
+	private String playGame(List<Player> players, Board board, String levelValue) {
 		List<Ladder> ladderList = board.getLadderList();
 		List<Snake> snakeList = board.getSnakeList();
 		boolean hasGameEnded = false;
@@ -56,7 +56,7 @@ public class Game {
 				player.setPosition(SnakeUtilities.getSnakeTail(player.getPosition(), snakeList));
 				if (player.getPosition() == gameProperties.NUM_POSITIONS_IN_BOARD) {
 					hasGameEnded = true;
-					result = "Player" + player.getPlayerId() + "  Won";
+					result = "Player " + player.getPlayerId() + "  Won" + " snakeSize = " +  board.getSnakeList().size() + " ladder size = " + board.getLadderList().size();
 					break;
 				}
 			}
@@ -65,7 +65,12 @@ public class Game {
 	}
 
 	private void createBoardByLevel(Board board, String levelValue) {
-		level.createLaddersAndSnakesOnLevel(levelValue);
-		board.generateValidBoard(level.getLadders(), level.getSnakes());
+		board.generateValidBoard(level.getLadders(levelValue), level.getSnakes(levelValue));
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

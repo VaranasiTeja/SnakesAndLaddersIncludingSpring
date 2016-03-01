@@ -1,44 +1,30 @@
 package com.tivamo.game.controller;
 
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import com.tivamo.game.properties.GameProperties;
-
-@Component
 public class Level {
 
-	@Autowired
-	private GameProperties gameProperties;
+	private Map<String, List<Integer>> levelMap;
 
-	private int ladders;
-	private int snakes;
+	public Level(Map<String, List<Integer>> levelMap) {
+		this.levelMap = levelMap;
+	}
 
-	public void createLaddersAndSnakesOnLevel(String level) {
-		HashMap<String, HashMap<Integer, Integer>> hashmap=new HashMap<String, HashMap<Integer, Integer>>();
-		HashMap<Integer, Integer> map2 = new HashMap<Integer, Integer>();
-		HashMap<Integer, Integer> map3 = new HashMap<Integer, Integer>();
-		map2.put(gameProperties.NUM_LADDERS_EASY, gameProperties.NUM_SNAKES_EASY);
-		hashmap.put("easy", map2);
-		map3.put(gameProperties.NUM_LADDERS_HARD, gameProperties.NUM_SNAKES_HARD);
-		hashmap.put("hard", map3);
-		for (Map.Entry<Integer, Integer> key : hashmap.get(level).entrySet()) {
-			ladders = key.getKey();
-			snakes = key.getValue();
-			System.out.println("Ladders In this Level: " + key.getKey());
-			System.out.println("Snakes In this Level: " + key.getValue());
+	public int getLadders(String level) {
+		List<Integer> l = levelMap.get(level);
+		if (l == null) {
+			throw new RuntimeException("wrong level value!");
 		}
+		return l.get(0);
 	}
 
-	public int getLadders() {
-		return ladders;
-	}
-
-	public int getSnakes() {
-		return snakes;
+	public int getSnakes(String level) {
+		List<Integer> l = levelMap.get(level);
+		if (l == null) {
+			throw new RuntimeException("wrong level value!");
+		}
+		return l.get(1);
 	}
 
 }

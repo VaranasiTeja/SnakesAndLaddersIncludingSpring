@@ -13,7 +13,7 @@ public class Init {
 	private Game game;
 
 	@RequestMapping(value = "/newgame", method = RequestMethod.GET)
-	public String initGame(@RequestParam("level") String level) {
+	public String initGame(@RequestParam("level") String level){
 		System.out.println(level + "------");
 		return game.newGame(level);
 	}
