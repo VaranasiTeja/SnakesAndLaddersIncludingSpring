@@ -12,9 +12,4 @@ public class ApplicationDependencyFactory {
 		return new PropertySourcesPlaceholderConfigurer();
 	}
 
-//	@Bean
-//	public Board getBoard() {
-//		return new Board();
-//	}
-
 }

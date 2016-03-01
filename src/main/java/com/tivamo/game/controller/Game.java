@@ -29,12 +29,12 @@ public class Game {
 
 	private String result;
 
-	public String newGame() {
+	public String newGame(String levelValue) {
 		List<Player> players = new ArrayList<Player>();
 		for (int player = 1; player <= gameProperties.NUM_PLAYERS; player++) {
 			players.add(new Player(player));
 		}
-		this.createBoardByLevel(board);
+		this.createBoardByLevel(board, levelValue);
 		return this.playGame(players, board);
 	}
 
@@ -64,8 +64,8 @@ public class Game {
 		return result;
 	}
 
-	private void createBoardByLevel(Board board) {
-		level.createLaddersAndSnakesOnLevel("easy");
+	private void createBoardByLevel(Board board, String levelValue) {
+		level.createLaddersAndSnakesOnLevel(levelValue);
 		board.generateValidBoard(level.getLadders(), level.getSnakes());
 	}
 }
