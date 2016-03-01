@@ -2,6 +2,8 @@ package com.tivamo.game.board;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.tivamo.game.ladder.Ladder;
 import com.tivamo.game.ladder.LadderManager;
 import com.tivamo.game.snake.Snake;
@@ -12,9 +14,13 @@ public class Board {
 	private List<Ladder> ladderList;
 	private List<Snake> snakeList;
 
+	@Autowired
+	private LadderManager ladderManager;
+
+	@Autowired
+	private SnakeManager snakeManager;
+
 	public void generateValidBoard(int ladders, int snakes) {
-		LadderManager ladderManager = new LadderManager();
-		SnakeManager snakeManager = new SnakeManager();
 		do {
 			ladderList = ladderManager.generateLadderList(ladders);
 			snakeList = snakeManager.generateSnakeList(snakes);

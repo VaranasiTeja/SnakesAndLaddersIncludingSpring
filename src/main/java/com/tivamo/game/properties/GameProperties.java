@@ -1,29 +1,31 @@
 package com.tivamo.game.properties;
 
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Properties;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
+@Configuration
+@PropertySource("classpath:application.properties")
 public class GameProperties {
-	public static int NUM_LADDERS_EASY;
-	public static int NUM_SNAKES_EASY;
-	public static int NUM_LADDERS_HARD;
-	public static int NUM_SNAKES_HARD;
-	public static int NUM_POSITIONS_IN_BOARD;
-	public static int DICE_OUTCOME_RANGE;
-	public static int NUM_PLAYERS;
 
-	public static void read() throws IOException {
-		Properties properties = new Properties();
-		FileReader input = new FileReader("/home/teja/Videos/eclipse/game/src/main/resources/global.properties");
-		properties.load(input);
-		NUM_LADDERS_EASY = Integer.parseInt(properties.getProperty("numLaddersEasy"));
-		NUM_SNAKES_EASY = Integer.parseInt(properties.getProperty("numSnakesEasy"));
-		NUM_LADDERS_HARD = Integer.parseInt(properties.getProperty("numLaddersHard"));
-		NUM_SNAKES_HARD = Integer.parseInt(properties.getProperty("numSnakesHard"));
-		NUM_POSITIONS_IN_BOARD = Integer.parseInt(properties.getProperty("numPositionsInBoard"));
-		DICE_OUTCOME_RANGE = Integer.parseInt(properties.getProperty("diceOutcomeRange"));
-		NUM_PLAYERS = Integer.parseInt(properties.getProperty("numPlayers"));
+	@Value("${numLaddersEasy}")
+	public int NUM_LADDERS_EASY;
 
-	}
+	@Value("${numSnakesEasy}")
+	public int NUM_SNAKES_EASY;
+
+	@Value("${numLaddersHard}")
+	public int NUM_LADDERS_HARD;
+
+	@Value("${numSnakesHard}")
+	public int NUM_SNAKES_HARD;
+
+	@Value("${numPositionsInBoard}")
+	public int NUM_POSITIONS_IN_BOARD;
+
+	@Value("${diceOutcomeRange}")
+	public int DICE_OUTCOME_RANGE;
+
+	@Value("${numPlayers}")
+	public int NUM_PLAYERS;
 }
